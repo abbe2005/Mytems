@@ -1,0 +1,305 @@
+@import url('https://fonts.cdnfonts.com/css/akira-expanded');
+@import url('https://fonts.cdnfonts.com/css/dark-seed');
+/* Reset all margins and padding */
+* {
+ box-sizing: border-box; /* Include padding and borders in element dimensions */
+}
+
+/* Apply black background to the entire website */
+html, body {
+    background-color: #000000; /* Black background */
+    min-height: 100vh; /* Ensure it covers the full viewport height */
+    width: 100vw; /* Ensure it covers the full viewport width */
+    font-family: Arial, sans-serif; /* Change to your preferred font */
+    overflow: auto; /* Prevent scrolling */
+}
+
+/* Nav Links Container */
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+/* Navbar Container */
+.nav {
+    font-family: 'Akira Expanded', sans-serif;
+    
+    display: flex;
+    justify-content: center; /* Center the navbar horizontally */
+    align-items: center;
+    padding: 1rem 2rem;
+ 
+    position: fixed; /* Position absolutely */
+    top: 0; /* Set to top of viewport */
+    left: 0; /* Set to left of viewport */
+    right: 0; /* Set to right of viewport */
+    z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+/* Nav Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Space between links */
+    list-style: none;
+}
+
+/* Nav Links */
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff; /* Change to your preferred color */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Nav Logo */
+.nav-logo img {
+    width: 105px; /* Adjust the width as needed */
+    height: 105px; /* Maintain aspect ratio */
+    margin: 0 2rem; /* Space around the logo */
+}
+.nav-logo img:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+#user-email {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #feffff;
+    cursor: pointer;
+}
+
+/* Specific Link Styling (Optional) */
+#apps-link,
+#safety-link,
+#contact-link,
+#login-link {
+    padding: 0.5rem 1rem; /* Add padding for better clickability */
+}
+
+/* Main Content */
+main {
+    background-color: #000000; /* Ensure main has black background */
+    color: #ffffff; /* White text for all content inside main */
+    height: 100vh; /* Full viewport height */
+    overflow: auto; /* Prevent scrolling */
+}
+
+/* Carousel Container */
+#heroCarousel {
+    height: 100vh; /* Take up the full height of the main container */
+    width: 100vw; /* Full viewport width */
+    overflow: auto; /* Prevent scrolling */
+    position: relative;
+    top: 0;
+    margin-top: -50px;
+    transition: transform 0.9s ease-in-out;
+}
+
+/* Carousel Slides */
+.carousel-item {
+    height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background-color: #000000; /* Ensure carousel slides have black background */
+    background-size: cover; /* Ensure the background image covers the slide */
+    background-position: center; /* Center the background image */
+    display: flex;
+    align-items: center; /* Vertically center the content */
+    justify-content: center; /* Horizontally center the content */
+    position: relative;
+    top: 0;
+}
+
+/* Hero Left Section */
+.hero-left {
+    font-family: "Akira Expanded", sans-serif;
+    text-align: center;
+    color: #ffffff; /* White text */
+    height: 105%; /* Ensure it takes up the full height of the slide */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    width: 100%; /* Ensure it takes up the full width of the slide */
+}
+/* Hero Title */
+.hero-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    opacity: 0; /* Start with invisible text */
+    animation: fadeInSlideUp 1s ease-out forwards;
+    animation-delay: 0.5s; /* Delay the animation */
+}
+
+/* Hero Subtitle */
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: normal;
+    opacity: 0; /* Start with invisible text */
+    animation: fadeInSlideUp 1s ease-out forwards;
+    animation-delay: 1s; /* Delay the animation */
+}
+/* Feature Image */
+.feature-image {
+    margin-top: 2rem;
+    opacity: 0; /* Start with invisible */
+    animation: fadeIn 2s ease-in-out forwards; /* Apply fade-in animation */
+}
+
+.feature-image i {
+    font-size: 10rem;
+    color: #ffffff; /* White icon */
+    transition: color 0.3s ease;
+}
+
+.feature-image i:hover {
+    color: #ffffff8a; /* Change to your preferred hover color */
+}
+
+@keyframes floatAndRotate {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.1) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+/* Hamburger Menu Button */
+.hamburger-menu {
+    display: none; /* Hide by default */
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.feature-image a {
+    display: inline-block;
+    font-size: 3rem; /* Adjust icon size */
+    color: #fff; /* Icon color */
+    animation: floatAndRotate 3s ease-in-out infinite;
+}
+
+.feature-image a:hover {
+    animation: none; /* Stop the floating animation on hover */
+    transform: scale(1.2) rotate(10deg);
+    color: #ffcc00; /* Change icon color on hover */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Show on smaller screens */
+    }
+
+    .nav-links-container {
+        display: none; /* Hide nav links by default on smaller screens */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on your navbar height */
+        left: 0;
+        background-color: #000000;
+        width: 100%;
+        padding: 1rem;
+        z-index: 1000;
+    }
+
+    .nav-links-container.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-logo img {
+        width: 80px; /* Adjust logo size for smaller screens */
+        height: 80px;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0; /* Start with invisible */
+    }
+    100% {
+        opacity: 1; /* End with fully visible */
+    }
+}
+
+@keyframes fadeInSlideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+    }
+
+    .feature-image i {
+        font-size: 8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .feature-image i {
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.5rem;
+    }
+
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+
+    .feature-image i {
+        font-size: 4rem;
+    }
+}

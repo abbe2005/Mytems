@@ -1,0 +1,450 @@
+@import url('https://fonts.cdnfonts.com/css/akira-expanded');
+@import url('https://fonts.cdnfonts.com/css/dark-seed');
+html, body {
+    height: 100%; /* Ensure html and body cover full height */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+body {
+    background: radial-gradient(circle, #0a192f, #1e1e2f);
+    background-size: 200% 200%;
+    animation: gradientAnimation 10s ease infinite;
+    background-color: #0a192f; /* Fallback color */
+    color: #ffffff; /* White text for contrast */
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    min-height: 100vh; /* Ensure body covers at least the viewport height */
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(26, 188, 156, 0.5);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(52, 152, 219, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Navbar Container */
+.nav {
+    font-family: 'Akira Expanded', sans-serif;
+    
+    display: flex;
+    justify-content: center; /* Center the navbar horizontally */
+    align-items: center;
+    padding: 1rem 2rem;
+ 
+    position: absolute; /* Position absolutely */
+    top: 0; /* Set to top of viewport */
+    left: 0; /* Set to left of viewport */
+    right: 0; /* Set to right of viewport */
+    z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+/* Nav Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Space between links */
+    list-style: none;
+}
+
+/* Nav Links */
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff; /* Change to your preferred color */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Nav Logo */
+.nav-logo img {
+    width: 105px; /* Adjust the width as needed */
+    height: 105px; /* Maintain aspect ratio */
+    margin: 0 2rem; /* Space around the logo */
+}
+.nav-logo img:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Specific Link Styling (Optional) */
+#apps-link,
+#safety-link,
+#contact-link,
+#login-link {
+    padding: 0.5rem 1rem; /* Add padding for better clickability */
+}
+
+main {
+    color: #ffffff; /* White text for all content inside main */
+    min-height: 100vh; /* Ensure it covers at least the viewport height */
+}
+
+.input-text{
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* Hero Left Section */
+.hero-left {
+    font-family: "Akira Expanded", sans-serif;
+    text-align: center;
+   
+    color: #ffffff; /* White text */
+    height: 100%; /* Ensure it takes up the full height of the slide */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center the content */
+    align-items: center; /* Horizontally center the content */
+    width: 100%; /* Ensure it takes up the full width of the slide */
+}
+.hero-text {
+    background: #0000007d;
+    border: none;
+    border-radius: 7px;
+    padding: 2rem;
+  
+    
+}
+
+/* Nav Links Container */
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+/* Text inside the card */
+.h2 {
+    font-family: 'Akira Expanded', sans-serif;
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    margin: 0.5rem 0;
+}
+
+/* Hamburger Menu Button */
+.hamburger-menu {
+    display: none; /* Hide by default */
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block; /* Show on smaller screens */
+    }
+
+    .nav-links-container {
+        display: none; /* Hide nav links by default on smaller screens */
+        flex-direction: column;
+        position: absolute;
+        top: 60px; /* Adjust based on your navbar height */
+        left: 0;
+        background-color: #000000;
+        width: 100%;
+        padding: 1rem;
+        z-index: 1000;
+    }
+
+    .nav-links-container.active {
+        display: flex; /* Show when active */
+    }
+
+    .nav-logo img {
+        width: 80px; /* Adjust logo size for smaller screens */
+        height: 80px;
+    }
+
+    .hero-left {
+        padding: 2rem; /* Adjust padding for smaller screens */
+    }
+
+    .input-text {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .input-text input,
+    .input-text textarea {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .social-media-icons {
+        bottom: 10px; /* Adjust position for smaller screens */
+    }
+
+    .social-icon {
+        width: 40px; /* Adjust size for smaller screens */
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-left {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    .input-text {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .input-text input,
+    .input-text textarea {
+        padding: 0.25rem; /* Adjust padding for smaller screens */
+    }
+
+    .social-media-icons {
+        bottom: 5px; /* Adjust position for smaller screens */
+    }
+
+    .social-icon {
+        width: 30px; /* Adjust size for smaller screens */
+        height: 30px;
+    }
+}
+/* Submit Button Styling */
+button[type="submit"] {
+    font-family: 'Akira Expanded', sans-serif;
+    width: auto; /* Adjust width to fit content */
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    background-color: transparent; /* Transparent background */
+    color: #ffffff; /* White text */
+    cursor: pointer;
+    font-size: 1rem; /* Adjust font size */
+    z-index: 1;
+    animation: fadeIn 2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+    color: hwb(0 29% 71%); /* Change hover color */
+}
+
+/* Input Field Styling */
+.input-text input,
+.input-text textarea {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.05); /* Very light semi-transparent background */
+    backdrop-filter: blur(10px); /* Add blur effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    animation: fadeIn 1.5s ease-in-out;
+    color: #ffffff;
+}
+
+.input-text input::placeholder,
+.input-text textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Light placeholder text */
+}
+
+.input-text input:focus,
+.input-text textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Fade-In Animation for All Elements Except Navbar */
+body *:not(.nav, .nav *, .nav-links, .nav-links *) {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Slide-In Animation for Hero Section */
+.hero-left {
+    animation: slideInFromLeft 1.5s ease-in-out;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Hover Effects for Buttons and Inputs */
+button[type="submit"]:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.input-text input:hover,
+.input-text textarea:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+/* Card Animation */
+.card {
+    animation: cardPopUp 1s ease-in-out;
+}
+
+@keyframes cardPopUp {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Background Animation Enhancements */
+body::before {
+    animation: backgroundPulse 10s infinite ease-in-out;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* Scrollbar Animation */
+::-webkit-scrollbar-thumb {
+    animation: scrollbarPulse 2s infinite ease-in-out;
+}
+
+@keyframes scrollbarPulse {
+    0% {
+        background-color: rgba(26, 188, 156, 0.5);
+    }
+    50% {
+        background-color: rgba(52, 152, 219, 0.5);
+    }
+    100% {
+        background-color: rgba(26, 188, 156, 0.5);
+    }
+}
+/* Social Media Icons Container */
+.social-media-icons {
+    bottom: 20px;
+    display: flex;
+    gap: 1.5rem;
+    z-index: 1000;
+}
+
+/* Social Icon Styling */
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.social-icon:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+/* Individual Icon Delays for Floating Animation */
+.social-icon:nth-child(1) {
+    animation-delay: 0s;
+}
+.social-icon:nth-child(2) {
+    animation-delay: 0.5s;
+}
+.social-icon:nth-child(3) {
+    animation-delay: 1s;
+}
+.social-icon:nth-child(4) {
+    animation-delay: 1.5s;
+}
+.social-icon:nth-child(5) {
+    animation-delay: 2s;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem; /* Increased padding */
+}
+

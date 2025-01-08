@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTems</title>
+    <link rel="stylesheet" href="styles.css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="loader.css">
+</head>
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <div class="banter-loader">
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+            <div class="banter-loader__box"></div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <nav class="nav">
+        <div class="nav-links">
+            <!-- Hamburger Menu Button -->
+            <button id="hamburger-menu" class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Nav Links -->
+            <div id="nav-links-container" class="nav-links-container">
+                <a href="shop.html" id="apps-link">MARKET</a>
+                <a href="safety.html" id="safety-link">SAFETY</a>
+                <div class="nav-logo">
+                    <a href="index.html" id="home-link">
+                        <img src="MYTEMS.png" alt="MYTEMS Logo">
+                    </a>
+                </div>
+                <a href="contact.html" id="contact-link">CONTACT</a>
+                <div id="auth-links">
+                    <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
+                    <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
+                    <span id="user-email" style="display: none;"></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero page active" id="home-page">
+        <br>
+        <br>
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            </div>
+        
+            <div class="carousel-inner">
+                <div class="carousel-item active" style="position: relative; background: linear-gradient(135deg, #0a192f, #1e1e2f); background-size: 200% 200%; animation: gradientAnimation 10s ease infinite; color: #ffffff;">
+                    <section class="hero-left">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Buy what you need</h1>
+                            <h1 class="hero-title"> rent what you want</h1>
+                            <p class="hero-subtitle">and sell what someone else needs.</p>
+                        </div>
+                        <div class="feature-image">
+                            <a href="shop.html" class="btn-feature">
+                                <i class="fas fa-credit-card"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="carousel-item" style="background-image: url('slide2.jpg'); background-size: cover;">
+                    <section class="hero-left">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Rent it if you can't buy it!</h1>
+                            <p class="hero-subtitle">Have a date? A meeting? Need a stylish suit but don't have the budget?</p>
+                            <p class="hero-subtitle"> RENT IT THEN!</p>
+                        </div>
+                        <div class="feature-image">
+                            <a href="shop.html" class="btn-feature">
+                                <i class="fas fa-wallet"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="carousel-item" style="background-image: url('slide3.svg'); background-size: cover;">
+                    <section class="hero-left">
+                        <div class="hero-text">
+                            <h1 class="hero-title">Turn your unused items into cash!</h1>
+                            <p class="hero-subtitle">Want to become a seller? GET STARTED NOW!</p>
+                        </div>
+                        <div class="feature-image">
+                            <a href="shop.html" class="btn-feature">
+                                <i class="fas fa-money-bill"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+                <div class="carousel-item" style="position: relative; background: linear-gradient(135deg, #0a192f, #1e1e2f); background-size: 200% 200%; animation: gradientAnimation 10s ease infinite; color: #ffffff;">
+                    <section class="hero-left">
+                        <div class="hero-text">
+                            <h1 class="hero-title">About mytems</h1>
+                            <p class="hero-subtitle" style="font-size: 1.25rem;">wanna know more about mytems?</p>
+                        </div>
+                        <div class="feature-image">
+                            <a href="about.html" class="btn-feature">
+                                <i class="fas fa-question-circle"></i>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            </button>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+    <script src="auth.js"></script>
+
+    <script>
+        // Wait for the page to fully load
+        window.addEventListener('load', function() {
+            // Hide the loader
+            document.getElementById('loader').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyTems</title>
+    <link rel="stylesheet" href="safety.css">    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="loader.css">
+</head>
+<body>
+        <!-- Loader -->
+        <div id="loader">
+            <div class="banter-loader">
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+                <div class="banter-loader__box"></div>
+            </div>
+        </div>
+    
+        <nav class="nav">
+            <div class="nav-links">
+                <!-- Hamburger Menu Button -->
+                <button id="hamburger-menu" class="hamburger-menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <!-- Nav Links -->
+                <div id="nav-links-container" class="nav-links-container">
+                    <a href="shop.html" id="apps-link">MARKET</a>
+                    <a href="safety.html" id="safety-link">SAFETY</a>
+                    <div class="nav-logo">
+                        <a href="index.html" id="home-link">
+                            <img src="MYTEMS.png" alt="MYTEMS Logo">
+                        </a>
+                    </div>
+                    <a href="contact.html" id="contact-link">CONTACT</a>
+                    <div id="auth-links">
+                        <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
+                        <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
+                        <span id="user-email" style="display: none;"></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    <main class="hero page active" id="home-page">
+        <section class="hero-left">
+            <div class="hero-text">
+                <h1 class="hero-title">HOW DO I AVOID GETTING SCAMMED?</h1>
+                <br>
+                <p class="hero-subtitle">You should be aware of the following tips to avoid getting scammed:</p>
+                <p class="hero-subtitle">- You must take enough informations about the seller</p>
+                <p class="hero-subtitle">- You must be aware of the seller's reputation</p>
+                <p class="hero-subtitle">- You must be aware of the seller's reviews</p>
+                <p class="hero-subtitle">- Ask about the seller's return policy</p>
+                <p class="hero-subtitle">- Ask about the seller's warranty</p>
+                <p class="hero-subtitle">- Do not give your credit card informations to the seller</p>
+            </div>
+    </main>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+<script src="auth.js"></script>
+<script>
+    // Wait for the page to fully load
+    window.addEventListener('load', function() {
+        // Hide the loader
+        document.getElementById('loader').style.display = 'none';
+    });
+</script>
+<script>
+    // Toggle Navbar Visibility
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const navLinksContainer = document.getElementById('nav-links-container');
+
+hamburgerMenu.addEventListener('click', () => {
+    navLinksContainer.classList.toggle('active');
+});
+</script>
+</body>
+</html>

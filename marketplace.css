@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+section {
+    padding: 20px;
+}
+
+#add-item form input,
+#add-item form textarea,
+#add-item form button {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
+#add-item form button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+#item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item-card {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 250px;
+    background-color: white;
+}
+
+.item-card img {
+    width: 100%;
+}
+
+.item-card h3 {
+    margin: 10px 0;
+}
+
+.item-card button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+}
