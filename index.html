@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyTems</title>
-    <link rel="stylesheet" href="styles.css">    
+    <link rel="stylesheet" href="styles.css"> 
+    <link rel="stylesheet" href="hamburger.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -30,11 +31,16 @@
     <nav class="nav">
         <div class="nav-links">
             <!-- Hamburger Menu Button -->
-            <button id="hamburger-menu" class="hamburger-menu">
-                <i class="fas fa-bars"></i>
-            </button>
+            <label class="hamburger">
+                <input type="checkbox" id="hamburger-menu">
+                <svg viewBox="0 0 32 32">
+                  <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                  <path class="line" d="M7 16 27 16"></path>
+                </svg>
+              </label>
             <!-- Nav Links -->
             <div id="nav-links-container" class="nav-links-container">
+                <a href="messages.html" id="messages-link"><i class="fas fa-comments"></i></a>
                 <a href="shop.html" id="apps-link">MARKET</a>
                 <a href="safety.html" id="safety-link">SAFETY</a>
                 <div class="nav-logo">
@@ -42,11 +48,15 @@
                         <img src="MYTEMS.png" alt="MYTEMS Logo">
                     </a>
                 </div>
+                <a href="guide.html" id="guide-link">GUIDE</a>
                 <a href="contact.html" id="contact-link">CONTACT</a>
                 <div id="auth-links">
                     <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
                     <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
-                    <span id="user-email" style="display: none;"></span>
+                    <img id="user-profile-pic" 
+                         src="default-profile.png" 
+                         alt="Profile" 
+                         style="display: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; cursor: pointer;">
                 </div>
             </div>
         </div>
@@ -64,7 +74,7 @@
             </div>
         
             <div class="carousel-inner">
-                <div class="carousel-item active" style="position: relative; background: linear-gradient(135deg, #0a192f, #1e1e2f); background-size: 200% 200%; animation: gradientAnimation 10s ease infinite; color: #ffffff;">
+                <div class="carousel-item active" style="position: relative; background-color: black; background-size: 200% 200%; color: #ffffff;">
                     <section class="hero-left">
                         <div class="hero-text">
                             <h1 class="hero-title">Buy what you need</h1>
@@ -105,7 +115,7 @@
                         </div>
                     </section>
                 </div>
-                <div class="carousel-item" style="position: relative; background: linear-gradient(135deg, #0a192f, #1e1e2f); background-size: 200% 200%; animation: gradientAnimation 10s ease infinite; color: #ffffff;">
+                <div class="carousel-item" style="position: relative; background-color: black; background-size: 200% 200%; color: #ffffff;">
                     <section class="hero-left">
                         <div class="hero-text">
                             <h1 class="hero-title">About mytems</h1>
@@ -128,20 +138,15 @@
             </button>
         </div>
     </main>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-messaging-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="auth.js"></script>
-
-    <script>
-        // Wait for the page to fully load
-        window.addEventListener('load', function() {
-            // Hide the loader
-            document.getElementById('loader').style.display = 'none';
-        });
-    </script>
+    <script src="menu.js"></script>
+    <script src="loader.js"></script>
 </body>
 </html>

@@ -1,0 +1,154 @@
+@import url('https://fonts.cdnfonts.com/css/akira-expanded');
+@import url('https://fonts.cdnfonts.com/css/dark-seed');
+
+body {
+    background-color: #000000; /* Black background */
+
+    overflow: auto; /* Prevent scrolling */
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(26, 188, 156, 0.5);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(52, 152, 219, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Nav Links Container */
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    
+    backdrop-filter: blur(5px);
+    gap: 3rem;
+}
+/* Navbar Container */
+.nav {
+    font-family: 'Akira Expanded', sans-serif;
+    
+    display: flex;
+    justify-content: center; /* Center the navbar horizontally */
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed; /* Position absolutely */
+    top: 0; /* Set to top of viewport */
+    left: 0; /* Set to left of viewport */
+    right: 0; /* Set to right of viewport */
+    z-index: 1000; /* Ensure it is on top of other elements */
+}
+
+/* Nav Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Space between links */
+    list-style: none;
+}
+
+/* Nav Links */
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff; /* Change to your preferred color */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Nav Logo */
+.nav-logo img {
+    width: 105px; /* Adjust the width as needed */
+    height: 105px; /* Maintain aspect ratio */
+    margin: 0 2rem; /* Space around the logo */
+}
+.nav-logo img:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+#user-email {
+    color: #feffff;
+    cursor: pointer;
+}
+#user-email:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+/* Specific Link Styling (Optional) */
+#apps-link,
+#safety-link,
+#contact-link,
+#login-link {
+    padding: 0.5rem 1rem; /* Add padding for better clickability */
+}
+.seller-info {
+    color :aliceblue; font-family: 'Akira Extended';
+}
+.hero-left{
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the navbar horizontally */
+    align-items: center;
+    text-align: center;
+}
+.user-profile-pic :hover{
+    transform: scale(1.1);
+  }
+
+        .product-image {
+            padding: 2rem 2rem;
+            max-width: 80%;
+            height: 80%;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            margin-top: 20px;
+        }
+        .product-name {
+            padding: 0rem 1rem;
+            font-size: 24px;
+            color: #ffffff;
+            
+            margin-bottom: 10px;
+        }
+        .product-price {
+            padding: 0rem 1rem;
+            font-size: 20px;
+            color: #008702;
+            margin-bottom: 10px;
+        }
+        .product-description {
+            padding: 0rem 1rem;
+            font-size: 16px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .product-contact{
+            padding: 0rem 1rem;
+            font-size: 20px;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }

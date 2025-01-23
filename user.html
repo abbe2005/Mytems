@@ -3,85 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyTems</title>
-    <link rel="stylesheet" href="styles.css">    
+    <title>User Profile</title>
+    <link rel="stylesheet" href="style.css">    
+    <link rel="stylesheet" href="hamburger.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="loader.css">
 </head>
-<body>
-    <!-- Loader -->
-    <div id="loader">
-        <div class="banter-loader">
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-            <div class="banter-loader__box"></div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
+<body style="background-color: black;">
     <nav class="nav">
-        <div class="nav-links">
-            <a href="shop.html" id="apps-link">MARKET</a>
-            <a href="safety.html" id="safety-link">SAFETY</a>
-            <div class="nav-logo">
-                <a href="index.html" id="home-link">
-                    <img src="MYTEMS.png" alt="MYTEMS Logo">
-                </a>
+        <nav class="nav">
+            <div class="nav-links">
+                <!-- Hamburger Menu Button -->
+                <label class="hamburger">
+                    <input type="checkbox" id="hamburger-menu">
+                    <svg viewBox="0 0 32 32">
+                      <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                      <path class="line" d="M7 16 27 16"></path>
+                    </svg>
+                  </label>
+                <!-- Nav Links -->
+                <div id="nav-links-container" class="nav-links-container">
+                    <a href="shop.html" id="apps-link">MARKET</a>
+                    <a href="safety.html" id="safety-link">SAFETY</a>
+                    <div class="nav-logo">
+                        <a href="index.html" id="home-link">
+                            <img src="MYTEMS.png" alt="MYTEMS Logo">
+                        </a>
+                    </div>
+                    <a href="contact.html" id="contact-link">CONTACT</a>
+                    <div id="auth-links">
+                        <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
+                        <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
+                        <img id="user-profile-pic" 
+                             src="default-profile.png" 
+                             alt="Profile" 
+                             style="display: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; cursor: pointer;">
+                    </div>
+                </div>
             </div>
-            <a href="contact.html" id="contact-link">CONTACT</a>
-            <div id="auth-links">
-                <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
-                <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
-                <span id="user-email" style="display: none;"></span>
-            </div>
-        </div>
+        </nav>
     </nav>
 
-    <main class="hero page active" id="home-page">
-        <br>
-        <br>
-        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-touch="true">
-    
-        
-            <div class="carousel-inner">
-                <div class="carousel-item active" style="position: relative; background: linear-gradient(135deg, #0a192f, #1e1e2f); background-size: 200% 200%; animation: gradientAnimation 10s ease infinite; color: #ffffff;">
-                    <section class="hero-left">
-                        <div class="hero-text">
-                            <button class="hero-title" id="logout-button">Logout</button>
-                        </div>
-                    </section>
+    <main class="hero page active" id="user-profile-page">
+        <br><br><br><br>
+        <div class="hero-left">
+            <div id="message" style="display: none;" class="alert"></div>
+            
+            <div class="user-profile-container">
+                <h2>User Profile</h2>
+                
+                <!-- Current User Info -->
+                <div class="current-user-info">
+                    <img id="current-profile-pic" 
+                         src="default-profile.png" 
+                         alt="Profile Picture" 
+                         style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem;">
+                    <h3 id="current-username">Username</h3>
+                    <p id="current-email">email@example.com</p>
                 </div>
-        
-            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev" style="display: none;">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next" style="display: none;">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            </button>
+
+                <!-- Profile Picture Update -->
+                <form id="profile-picture-form" class="profile-update-form">
+                    <h3>Update Profile Picture</h3>
+                    <input type="file" id="profile-picture" accept="image/*" style="margin-bottom: 1rem;">
+                    <button type="submit">Update Profile Picture</button>
+                </form>
+
+                <!-- Username Update -->
+                <form id="username-form" class="profile-update-form">
+                    <h3>Update Username</h3>
+                    <div class="input-text">
+                        <input type="text" id="username" placeholder="New Username" required>
+                        <button type="submit">Update Username</button>
+                    </div>
+                </form>
+
+                <!-- Email Verification -->
+                <div class="email-verification">
+                    <h3>Email Verification</h3>
+                    <p id="email-verification-status">Status: Not Verified</p>
+                    <button id="verify-email">Send Verification Email</button>
+                </div>
+
+                <!-- Password Change -->
+                <form id="password-form" class="profile-update-form">
+                    <h3>Change Password</h3>
+                    <div class="input-text">
+                        <input type="password" id="current-password" placeholder="Current Password" required>
+                        <input type="password" id="new-password" placeholder="New Password" required>
+                        <input type="password" id="confirm-password" placeholder="Confirm New Password" required>
+                        <button type="submit">Change Password</button>
+                    </div>
+                </form>
+
+                <!-- Logout Button -->
+                <button id="logout-button" class="logout-btn">Logout</button>
+            </div>
         </div>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
+    <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
-    <script src="auth.js"></script>
-
-    <script>
-        // Wait for the page to fully load
-        window.addEventListener('load', function() {
-            // Hide the loader
-            document.getElementById('loader').style.display = 'none';
-        });
-    </script>
+    <!-- Supabase SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script type="module" src="auth.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>

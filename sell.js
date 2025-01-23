@@ -1,29 +1,11 @@
-// Initialize Firebase with your config
-const firebaseConfig = {
-    apiKey: "AIzaSyBYe8Oj-bTk9C_xkmeU2fb3eXo-_v0CXKg",
-    authDomain: "mytems-e5043.firebaseapp.com",
-    projectId: "mytems-e5043",
-    storageBucket: "mytems-e5043.firebasestorage.app",
-    messagingSenderId: "424810638850",
-    appId: "1:424810638850:web:7b1b5bc91b5cbf1bacc11b"
-};
-
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-// Initialize Supabase properly
-const supabaseUrl = 'https://qlcfxifzusjobkhpgway.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFsY2Z4aWZ6dXNqb2JraHBnd2F5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzYyODAwNjMsImV4cCI6MjA1MTg1NjA2M30.BNMpou6EijySSsISAbHT6I7QxW29FQhwMG2l_rZL060';
-const supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
-
-// Get references to auth and firestore
-const auth = firebase.auth();
-const db = firebase.firestore();
+// Initialize Supabase client
+const supabaseClient = supabase;
 
 // Handle image preview
 const imagesInput = document.getElementById('images');
 const imagePreview = document.getElementById('imagePreview');
-const uploadedImages = new Set();
+const sellForm = document.getElementById('sellForm');
+const submitBtn = document.getElementById('submitBtn');
 
 imagesInput.addEventListener('change', (e) => {
     imagePreview.innerHTML = '';
@@ -34,7 +16,7 @@ imagesInput.addEventListener('change', (e) => {
         reader.onload = (e) => {
             const img = document.createElement('img');
             img.src = e.target.result;
-            img.style.width = '100px'; // Add styling for preview
+            img.style.width = '100px';
             img.style.height = 'auto';
             img.style.margin = '5px';
             imagePreview.appendChild(img);
@@ -43,13 +25,44 @@ imagesInput.addEventListener('change', (e) => {
     });
 });
 
+// Function to upload images to Supabase
+async function uploadImages(files) {
+    const imageUrls = [];
+
+    for (const file of files) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+
+        try {
+            // Upload the file directly
+            const { data: uploadData, error: uploadError } = await supabaseClient.storage
+                .from('item_images')
+                .upload(`images/${fileName}`, file);
+
+            if (uploadError) throw uploadError;
+
+            // Get public URL
+            const { data } = supabaseClient.storage
+                .from('item_images')
+                .getPublicUrl(`images/${fileName}`);
+
+            imageUrls.push(data.publicUrl);
+        } catch (error) {
+            console.error('Image upload error:', error);
+            throw error;
+        }
+    }
+
+    return imageUrls;
+}
+
 // Handle form submission
 sellForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     submitBtn.disabled = true;
 
     try {
-        const user = auth.currentUser ;
+        const user = auth.currentUser;
         if (!user) {
             throw new Error('You must be logged in to sell products');
         }
@@ -65,9 +78,9 @@ sellForm.addEventListener('submit', async (e) => {
             description: document.getElementById('description').value,
             type: document.getElementById('type').value,
             delivery: document.getElementById('delivery').checked,
-            phone: document.getElementById('phone').value, // Add phone number
-            email: document.getElementById('email').value, // Add email address
-            imageUrls: imageUrls, // Array of image URLs
+            phone: document.getElementById('phone').value,
+            email: document.getElementById('email').value,
+            imageUrls: imageUrls,
             userId: user.uid,
             createdAt: new Date().toISOString()
         };
@@ -86,33 +99,7 @@ sellForm.addEventListener('submit', async (e) => {
     }
 });
 
-// Function to upload images to Supabase
-async function uploadImages(files) {
-    const imageUrls = [];
-
-    for (const file of files) {
-        const fileExt = file.name.split('.').pop();
-        const fileName = `${Math.random()}.${fileExt}`;
-
-        // Upload the file directly (no need for anonymous auth if bucket is public)
-        const { data: uploadData, error: uploadError } = await supabaseClient.storage
-            .from('item_images')
-            .upload(`images/${fileName}`, file);
-
-        if (uploadError) throw uploadError;
-
-        // Get public URL
-        const { data: { publicUrl } } = supabaseClient.storage
-            .from('item_images')
-            .getPublicUrl(`images/${fileName}`);
-
-        imageUrls.push(publicUrl);
-    }
-
-    return imageUrls;
-}
-
-// Re-use your existing showMessage function
+// Show Message Function
 function showMessage(message, isError = false) {
     const messageDiv = document.getElementById('message');
     if (!messageDiv) {
@@ -147,4 +134,27 @@ auth.onAuthStateChanged((user) => {
     if (!user) {
         window.location.href = 'login.html';
     }
+});
+
+// Loading Indicator for Submit Button
+const submitButton = document.getElementById('submitBtn');
+const observer = new MutationObserver(function(mutations) {
+    if (submitButton.disabled) {
+        const template = `
+            <div class="wrapper">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+                <div class="shadow"></div>
+            </div>
+        `;
+        submitButton.innerHTML = template;
+    }
+});
+
+observer.observe(submitButton, {
+    attributes: true,
+    attributeFilter: ['disabled']
 });

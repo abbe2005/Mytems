@@ -72,12 +72,17 @@ html, body {
 }
 
 #user-email {
-    margin-left: 10px;
-    font-weight: bold;
     color: #feffff;
     cursor: pointer;
 }
-
+#user-email:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+.user-profile-pic :hover{
+    transform: scale(1.1);
+  }
 /* Specific Link Styling (Optional) */
 #apps-link,
 #safety-link,
@@ -177,15 +182,7 @@ main {
         transform: translateY(0) scale(1) rotate(0deg);
     }
 }
-/* Hamburger Menu Button */
-.hamburger-menu {
-    display: none; /* Hide by default */
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
+
 .feature-image a {
     display: inline-block;
     font-size: 3rem; /* Adjust icon size */
@@ -200,33 +197,116 @@ main {
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
+/* Messaging Page */
+.messages-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 2rem;
+}
 
-/* Responsive Styles */
-@media (max-width: 768px) {
-    .hamburger-menu {
-        display: block; /* Show on smaller screens */
-    }
+.messages-container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    height: 80vh;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-    .nav-links-container {
-        display: none; /* Hide nav links by default on smaller screens */
-        flex-direction: column;
-        position: absolute;
-        top: 60px; /* Adjust based on your navbar height */
-        left: 0;
-        background-color: #000000;
-        width: 100%;
-        padding: 1rem;
-        z-index: 1000;
-    }
+.chats-list {
+    width: 30%;
+    background-color: #2a2a2a;
+    padding: 1rem;
+    overflow-y: auto;
+}
 
-    .nav-links-container.active {
-        display: flex; /* Show when active */
-    }
+.chats-list h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
 
-    .nav-logo img {
-        width: 80px; /* Adjust logo size for smaller screens */
-        height: 80px;
-    }
+.chat-window {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+#chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.message-input-container {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #3a3a3a;
+    color: #ffffff;
+}
+
+#send-button {
+    background-color: #4a4a4a;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+#send-button:hover {
+    background-color: #5a5a5a;
+}
+#messages-link i {
+    font-size: 1.5rem;
+    color: #ffffff;
+    transition: color 0.3s ease;
+}
+
+#messages-link i:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+.message {
+    max-width: 60%;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.message.sent {
+    background-color: #007bff;
+    color: white;
+    margin-left: auto;
+}
+
+.message.received {
+    background-color: #f1f1f1;
+    color: black;
+    margin-right: auto;
+}
+
+.message-timestamp {
+    font-size: 0.8em;
+    color: #666;
+    display: block;
+    margin-top: 5px;
 }
 
 @keyframes fadeIn {
@@ -249,17 +329,6 @@ main {
     }
 }
 
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
 /* Responsive Styles */
 @media (max-width: 1200px) {

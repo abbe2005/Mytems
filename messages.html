@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hamburger.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-links">
+            <label class="hamburger">
+                <input type="checkbox" id="hamburger-menu">
+                <svg viewBox="0 0 32 32">
+                    <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                    <path class="line" d="M7 16 27 16"></path>
+                </svg>
+            </label>
+            <div id="nav-links-container" class="nav-links-container">
+                <a href="shop.html" id="apps-link">MARKET</a>
+                <a href="safety.html" id="safety-link">SAFETY</a>
+                <div class="nav-logo">
+                    <a href="index.html" id="home-link">
+                        <img src="MYTEMS.png" alt="MYTEMS Logo">
+                    </a>
+                </div>
+                <a href="contact.html" id="contact-link">CONTACT</a>
+                <a href="messages.html" id="messages-link"><i class="fas fa-comments"></i></a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <h2>Your Messages</h2>
+        <div id="chat-container"></div>
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        const chatContainer = document.getElementById('chat-container');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+
+        let receiverId = ''; // Set this to the ID of the user you want to chat with
+
+        // Fetch messages
+        function fetchMessages() {
+            const user = firebase.auth().currentUser ;
+            if (user) {
+                const senderId = user.uid;
+                fetch(`get_messages.php?sender_id=${senderId}&receiver_id=${receiverId}`)
+                    .then(response => response.json())
+                    .then(messages => {
+                        chatContainer.innerHTML = '';
+                        messages.forEach(msg => {
+                            const messageDiv = document.createElement('div');
+                            messageDiv.textContent = `${msg.sender_id}: ${msg.message}`;
+                            chatContainer.appendChild(messageDiv);
+                        });
+                    });
+            }
+        }
+
+        // Send message
+        messageForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const user = firebase.auth().currentUser ;
+            if (user) {
+                const senderId = user.uid;
+                const message = messageInput.value;
+
+                fetch('send_message.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: `sender_id=${senderId}&receiver_id=${receiverId}&message=${message}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        messageInput.value = '';
+                        fetchMessages(); // Refresh messages
+                    } else {
+                        alert('Error sending message');
+                    }
+                });
+            }
+        });
+
+        // Fetch messages every 2 seconds
+        setInterval(fetchMessages, 2000);
+    </script>
+</body>
+</html>

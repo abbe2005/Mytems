@@ -1,20 +1,11 @@
 @import url('https://fonts.cdnfonts.com/css/akira-expanded');
 @import url('https://fonts.cdnfonts.com/css/dark-seed');
+
 html, body {
-    height: 100%; /* Ensure html and body cover full height */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-}
-body {
-    background: radial-gradient(circle, #0a192f, #1e1e2f);
+    position: relative;
+    background-color: black;
     background-size: 200% 200%;
-    animation: gradientAnimation 10s ease infinite;
-    background-color: #0a192f; /* Fallback color */
     color: #ffffff; /* White text for contrast */
-    margin: 0;
-    padding: 0;
-    overflow-y: auto;
-    min-height: 100vh; /* Ensure body covers at least the viewport height */
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -40,18 +31,9 @@ body {
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-
-@keyframes gradientAnimation {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
+.user-profile-pic :hover{
+    transform: scale(1.1);
+  }
 
 /* Navbar Container */
 .nav {
@@ -112,9 +94,20 @@ body {
     padding: 0.5rem 1rem; /* Add padding for better clickability */
 }
 
+#user-email {
+    color: #feffff;
+    cursor: pointer;
+}
+#user-email:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
 main {
+    background-color: #000000;
     color: #ffffff; /* White text for all content inside main */
-    min-height: 100vh; /* Ensure it covers at least the viewport height */
+    height: 100vh; /* Full viewport height */
 }
 
 .input-text{
@@ -124,7 +117,7 @@ main {
 .hero-left {
     font-family: "Akira Expanded", sans-serif;
     text-align: center;
-   
+    background-color: #000000;
     color: #ffffff; /* White text */
     height: 100%; /* Ensure it takes up the full height of the slide */
     display: flex;
@@ -255,7 +248,9 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    color: hwb(0 29% 71%); /* Change hover color */
+    color: #ffffff;
+            filter:drop-shadow(0 0 20px rgb(255, 255, 255)) ;
+            transform: translateY(-2px);
 }
 
 /* Input Field Styling */
@@ -300,27 +295,7 @@ body *:not(.nav, .nav *, .nav-links, .nav-links *) {
     }
 }
 
-/* Slide-In Animation for Hero Section */
-.hero-left {
-    animation: slideInFromLeft 1.5s ease-in-out;
-}
 
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateX(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Hover Effects for Buttons and Inputs */
-button[type="submit"]:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
 
 .input-text input:hover,
 .input-text textarea:hover {
@@ -328,38 +303,9 @@ button[type="submit"]:hover {
     transition: transform 0.3s ease;
 }
 
-/* Card Animation */
-.card {
-    animation: cardPopUp 1s ease-in-out;
-}
 
-@keyframes cardPopUp {
-    0% {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
 
-/* Background Animation Enhancements */
-body::before {
-    animation: backgroundPulse 10s infinite ease-in-out;
-}
 
-@keyframes backgroundPulse {
-    0% {
-        opacity: 0.5;
-    }
-    50% {
-        opacity: 0.8;
-    }
-    100% {
-        opacity: 0.5;
-    }
-}
 
 /* Scrollbar Animation */
 ::-webkit-scrollbar-thumb {
@@ -383,6 +329,7 @@ body::before {
     display: flex;
     gap: 1.5rem;
     z-index: 1000;
+    
 }
 
 /* Social Icon Styling */
@@ -399,8 +346,6 @@ body::before {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.5rem;
-    transition: all 0.3s ease;
-    animation: float 3s ease-in-out infinite;
 }
 
 /* Hover Effects */
@@ -410,35 +355,6 @@ body::before {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Floating Animation */
-@keyframes float {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
-/* Individual Icon Delays for Floating Animation */
-.social-icon:nth-child(1) {
-    animation-delay: 0s;
-}
-.social-icon:nth-child(2) {
-    animation-delay: 0.5s;
-}
-.social-icon:nth-child(3) {
-    animation-delay: 1s;
-}
-.social-icon:nth-child(4) {
-    animation-delay: 1.5s;
-}
-.social-icon:nth-child(5) {
-    animation-delay: 2s;
-}
 
 .form {
     display: flex;

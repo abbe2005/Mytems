@@ -1,65 +1,291 @@
+@import url('https://fonts.cdnfonts.com/css/akira-expanded');
+@import url('https://fonts.cdnfonts.com/css/dark-seed');
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background-color: #000000; /* Black background */
+
+    overflow: auto; /* Prevent scrolling */
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: transparent;
+    border-radius: 10px;
 }
 
-header {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    text-align: center;
+::-webkit-scrollbar-thumb {
+    background-color: rgba(26, 188, 156, 0.5);
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-h1 {
-    margin: 0;
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(52, 152, 219, 0.5);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-section {
-    padding: 20px;
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
-#add-item form input,
-#add-item form textarea,
-#add-item form button {
-    display: block;
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-}
-
-#add-item form button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-}
-
-#item-list {
+/* Nav Links Container */
+.nav-links-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    align-items: center;
+    gap: 3rem;
+}
+/* Navbar Container */
+.nav {
+    font-family: 'Akira Expanded', sans-serif;
+    background: transparent;
+    display: flex;
+    justify-content: center; /* Center the navbar horizontally */
+    align-items: center;
+    padding: 1rem 2rem;
+ 
+    position: center; /* Position absolutely */
+    top: 0; /* Set to top of viewport */
+    left: 0; /* Set to left of viewport */
+    right: 0; /* Set to right of viewport */
+    z-index: 1000; /* Ensure it is on top of other elements */
 }
 
-.item-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    width: 250px;
-    background-color: white;
+/* Nav Links Container */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 3rem; /* Space between links */
+    list-style: none;
 }
 
-.item-card img {
-    width: 100%;
+/* Nav Links */
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff; /* Change to your preferred color */
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
 }
 
-.item-card h3 {
-    margin: 10px 0;
+.nav-links a:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
 }
 
-.item-card button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px;
+/* Nav Logo */
+.nav-logo img {
+    width: 105px; /* Adjust the width as needed */
+    height: 105px; /* Maintain aspect ratio */
+    margin: 0 2rem; /* Space around the logo */
+}
+.nav-logo img:hover {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.4));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+
+#user-email {
+    color: #feffff;
     cursor: pointer;
+}
+#user-email:hover {
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.7));
+    transition: transform 0.3s ease, color 0.3s ease;
+    transform: scale(1.1);
+}
+.product-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.product-name{
+    font-size: 16;
+    color:#ffffff;
+}
+.product-price{
+    font-size: 16px;
+    color: #00ad0e;
+}
+
+        .search-container {
+            margin-top: 80px;
+            margin-bottom: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 3px;
+            margin-bottom: 15px;
+        }
+
+        .filter-btn {
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1.5px solid #000000;
+            background: #f0f0f0;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+@media (max-width: 768px){
+    .search-container {
+        margin-top: 80px;
+        margin-bottom: 20px;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        border-radius: 25px;
+        font-size: 15px;
+    }
+
+    .filters {
+        font-size: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 3px;
+        margin-bottom: 15px;
+    }
+
+    .filter-btn {
+        padding: 3px 6px;
+        border-radius: 20px;
+        border: 1.5px solid #000000;
+        background: #f0f0f0;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+}
+        .filter-btn.active {
+            background: #000000;
+            color: white;
+            border: 1.5px solid #ddd;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: transparent;
+            backdrop-filter: blur(10px);
+            border: 1.5px  #ddd;
+            border-radius: 10px;
+            box-shadow: 0 1px 2px rgba(255, 255, 255, 0.152);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.331);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .product-tags {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        .tag-buy {
+            background: #009dff;
+            color: #ffffff;
+        }
+
+        .tag-rent {
+            background: #ffbb00;
+            color: #ffffff;
+        }
+
+        .tag-delivery {
+            background: #00ad0e;
+            color: #ffffff;
+        }
+
+        .view-details-btn {
+            font-family: 'Akira Expanded', sans-serif;
+            width: 100%;
+            padding: 8px;
+            background: transparent;
+            color: rgb(228, 228, 228);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .view-details-btn:hover {
+            color: #ffffff;
+            filter:drop-shadow(0 0 20px rgb(255, 255, 255)) ;
+            transform: translateY(-2px);
+        }
+.delete-product-btn{
+    font-family: 'Akira Expanded', sans-serif;
+    width: 100%;
+    padding: 8px;
+    background: transparent;
+    color: rgb(187, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.delete-product-btn:hover {
+    color: red;
+    filter:drop-shadow(0 0 20px rgb(255, 166, 166)) ;
+    transform: translateY(-2px);
 }

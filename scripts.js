@@ -30,11 +30,5 @@ function handleWheel(event) {
 // Add debounced wheel event listener with a shorter delay
 carousel.addEventListener('wheel', debounce(handleWheel, 100));
 
-// Toggle Navbar Visibility
-const hamburgerMenu = document.getElementById('hamburger-menu');
-const navLinksContainer = document.getElementById('nav-links-container');
 
-hamburgerMenu.addEventListener('click', () => {
-    navLinksContainer.classList.toggle('active');
-});
 });

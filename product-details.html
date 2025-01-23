@@ -4,122 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Details - MyTems</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="details.css">
+    <link rel="stylesheet" href="hamburger.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        .product-details-container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .product-image {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-        .product-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .product-price {
-            font-size: 20px;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .product-description {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 20px;
-        }
-        .back-btn {
-            margin-top: 20px;
-            padding: 10px 20px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .back-btn:hover {
-            background: #0056b3;
-        }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/akira-expanded" rel="stylesheet">
+    <link rel="stylesheet" href="loader.css">
 </head>
-<body>
-    <!-- Navbar (Reuse your existing navbar) -->
-    <nav class="nav">
-        <div class="nav-links">
-            <a href="shop.html" id="apps-link">MARKET</a>
-            <a href="safety.html" id="safety-link">SAFETY</a>
-            <div class="nav-logo">
-                <a href="index.html" id="home-link">
-                    <img src="MYTEMS.png" alt="MYTEMS Logo">
-                </a>
+<body style="background-color: black;">
+            <!-- Loader -->
+            <div id="loader">
+                <div class="banter-loader">
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                    <div class="banter-loader__box"></div>
+                </div>
             </div>
-            <a href="contact.html" id="contact-link">CONTACT</a>
-            <div id="auth-links">
-                <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
-                <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
-                <span id="user-email" style="display: none;"></span>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Product Details Section -->
-    <div class="product-details-container">
+            <nav class="nav">
+                <div class="nav-links">
+                    <!-- Hamburger Menu Button -->
+                    <label class="hamburger">
+                        <input type="checkbox" id="hamburger-menu">
+                        <svg viewBox="0 0 32 32">
+                          <path class="line line-top-bottom" d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"></path>
+                          <path class="line" d="M7 16 27 16"></path>
+                        </svg>
+                      </label>
+                    <!-- Nav Links -->
+                    <div id="nav-links-container" class="nav-links-container">
+                        <a href="messages.html" id="messages-link"><i class="fas fa-comments"></i></a>
+                        <a href="shop.html" id="apps-link">MARKET</a>
+                        <a href="safety.html" id="safety-link">SAFETY</a>
+                        <div class="nav-logo">
+                            <a href="index.html" id="home-link">
+                                <img src="MYTEMS.png" alt="MYTEMS Logo">
+                            </a>
+                        </div>
+                        <a href="contact.html" id="contact-link">CONTACT</a>
+                        <div id="auth-links">
+                            <a href="login.html" id="login-link" style="display: none;">LOGIN</a>
+                            <a href="#" id="logout-link" style="display: none;">LOGOUT</a>
+                            <img id="user-profile-pic" 
+                                 src="default-profile.png" 
+                                 alt="Profile" 
+                                 style="display: none; width: 40px; height: 40px; border-radius: 50%; object-fit: cover; cursor: pointer;">
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+    <div class="hero-left">
         <div id="productDetails">
             <!-- Product details will be dynamically inserted here -->
         </div>
-        <button class="back-btn" onclick="window.history.back()">Back to Shop</button>
+        <br>
+        <br>
+        <h3 id="sinfo" style="color :aliceblue; font-family: 'Akira Extended';">Shared By:</h3>
+        <div class="seller-info">
+            
+            <br>
+            <img id="seller-profile-pic" src="default-profile.png" alt="Seller Profile" style="width: 100px; height: 100px; border-radius: 100%;">
+            <br>
+            <h3 id="seller-username">Seller Username</h3>
+            <br>
+            <button id="message-seller" onclick="startChat('SELLER_USER_ID')">Message Seller</button>
+        </div>
+        <br>
+        <br>
     </div>
 
+
     <!-- Firebase Scripts -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-messaging-compat.js"></script>
+<script>function startChat(sellerId) {
+    // Redirect to messages page with seller ID
+    window.location.href = `messages.html?seller_id=${sellerId}`;
+}</script>
     <script src="auth.js"></script>
-   <script>
-
-
- // Fetch product details based on the ID in the URL
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get('id');
-
-if (productId) {
-    // Fetch product details from Firestore
-    db.collection('products').doc(productId).get()
-        .then(doc => {
-            if (doc.exists) {
-                const product = doc.data();
-                document.getElementById('productDetails').innerHTML = `
-                    <img src="${product.imageUrls[0]}" alt="${product.name}" class="product-image">
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-price">$${product.price}</div>
-                    <div class="product-description">${product.description}</div>
-                    <div class="product-contact">
-                        <p><strong>Phone:</strong> ${product.phone}</p>
-                        <p><strong>Email:</strong> ${product.email}</p>
-                    </div>
-                `;
-            } else {
-                document.getElementById('productDetails').innerHTML = '<p>Product not found.</p>';
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching product:', error);
-            document.getElementById('productDetails').innerHTML = '<p>Error loading product details.</p>';
-        });
-} else {
-    document.getElementById('productDetails').innerHTML = '<p>No product ID provided.</p>';
-}
-    </script>
+    <script src="loader.js"></script>
+    <script src="menu.js"></script>
+    <script src="details.js"></script>
 </body>
 </html>

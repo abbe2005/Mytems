@@ -1,3 +1,6 @@
+
+
+
 // Global variables for filters and search
 let activeFilters = new Set();
 let products = [];
@@ -10,16 +13,21 @@ function createProductCard(product) {
             <img src="${imageUrl}" alt="${product.name}" class="product-image">
             <div class="product-info">
                 <div class="product-name">${product.name}</div>
-                <div class="product-price">$${product.price}</div>
+                <div class="product-price">${product.price}DA</div>
+                <br>
+                <div class="product-rating">Rating: ${product.averageRating}/5</div>
+                <br>
                 <div class="product-tags">
-                    <span class="tag tag-rent">${product.type}</span>
+                    <span class="tag tag-rent">For ${product.type}</span>
                     <span class="tag tag-delivery">
                         ${product.delivery ? 'Delivery Available' : 'No Delivery'}
                     </span>
                 </div>
+                <br>
                 <button class="view-details-btn" onclick="viewProductDetails('${product.id}')">
                     View Details
                 </button>
+               <br><br>
                 ${auth.currentUser  && auth.currentUser .uid === product.userId ? 
                     `<button class="delete-product-btn" onclick="deleteProduct('${product.id}')">
                         Delete Product
@@ -36,7 +44,7 @@ async function deleteProduct(productId) {
         showMessage('Product deleted successfully!');
         setTimeout(() => {
             window.location.href = 'shop.html';
-        }, 2000);
+        }, 500);
     } catch (error) {
         console.error('Error deleting product:', error);
         showMessage(error.message, true);
@@ -50,6 +58,13 @@ async function fetchProducts() {
             id: doc.id,
             ...doc.data()
         }));
+        // Fetch reviews for each product
+    for (const product of products) {
+        const reviewsSnapshot = await db.collection('reviews').where('productId', '==', product.id).get();
+        const reviews = reviewsSnapshot.docs.map(doc => doc.data());
+        const averageRating = reviews.length ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length : 0;
+        product.averageRating = averageRating.toFixed(1); // Store average rating
+    }
         applyFiltersAndSearch();
     } catch (error) {
         console.error('Error fetching products:', error);
